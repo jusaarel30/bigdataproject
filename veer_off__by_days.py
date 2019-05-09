@@ -28,5 +28,6 @@ def drawgraph(df):
     df['Vkpv'].value_counts().plot('bar')
     plt.xticks(rotation='horizontal')
     plt.show()
+    
 if __name__ == '__main__':
     main()
