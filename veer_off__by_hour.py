@@ -13,7 +13,7 @@ def main():
     df_from_each_file = (pd.read_csv(f, sep=';', encoding='latin-1', low_memory=False) for f in all_files)
     df = pd.concat(df_from_each_file, ignore_index=True)
     df_off = get_off_road(df)
-    df_indexed = index(df_off)
+    # df_indexed = index(df_off)
     drawgraph(df_off)
 
 
@@ -30,7 +30,7 @@ def get_off_road(df):
 def drawgraph(df):
     plt.style.use('grayscale')
     plt.figure(figsize=(10,5))
-    df['Kk'].value_counts().plot("bar")
+    df['Tunti'].value_counts().plot("bar")
     plt.xticks(rotation='horizontal')
     plt.show()
 
