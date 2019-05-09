@@ -1,9 +1,14 @@
 import numpy as np
 import pandas as pd
+import os
+import glob
 import matplotlib.pyplot as plt
 
 def main():
-	df = pd.read_csv('tieliikenneonnettomuudet_2017_onnettomuus.csv', sep=';', encoding='latin-1', low_memory=False)
+	path = r'./Data/'
+	all_files = glob.glob(os.path.join(path, "*.csv"))
+	df_from_each_file = (pd.read_csv(f, sep=';', encoding='latin-1', low_memory=False) for f in all_files)
+	df = pd.concat(df_from_each_file, ignore_index=True)
 	df = index(df)
 	offroad = get_off_road(df)
 
