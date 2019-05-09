@@ -1,3 +1,5 @@
+import glob
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,7 +8,10 @@ import matplotlib.ticker as ticker
 from pandas.plotting import register_matplotlib_converters
 
 def main():
-    df = pd.read_csv('tieliikenneonnettomuudet_2017_onnettomuus.csv', sep=';', encoding='latin-1', low_memory=False)
+    path = r'./Data/'
+    all_files = glob.glob(os.path.join(path, "*.csv"))
+    df_from_each_file = (pd.read_csv(f, sep=';', encoding='latin-1', low_memory=False) for f in all_files)
+    df = pd.concat(df_from_each_file, ignore_index=True)
     df_off = get_off_road(df)
     df_indexed = index(df_off)
     drawgraph(df_off)
