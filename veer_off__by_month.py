@@ -14,9 +14,9 @@ def main():
 
 def index(df):
     df['Päivä'] = pd.to_datetime(df['Päivä'])
-    df.set_index("Päivä")
+    # df.set_index("Päivä")
     return df
-    # return df.resample("24H", on='Päivä')
+    # return df.resample("M", on='Päivä')
 
 def get_off_road(df):
     """ filters all the accidents where vehicle veered off the road """
@@ -25,8 +25,8 @@ def get_off_road(df):
 def drawgraph(df):
     plt.style.use('grayscale')
     plt.figure(figsize=(10,5))
-    df['Vkpv'].value_counts().plot('bar')
-    plt.xticks(rotation='horizontal')
+    df['Kk'].value_counts().plot("bar")
     plt.show()
+
 if __name__ == '__main__':
     main()
