@@ -21,6 +21,12 @@ def main():
 	right_injured = get_severity_injury(right_offroad)
 	right_dead = get_severity_death(right_offroad)
 
+	print("Left side crashes total\n")
+	print(left_offroad["Onnett_id"].count())
+	print("Right side crashes total\n")
+	print(right_offroad["Onnett_id"].count())
+
+
 	draw_graph_line(left_offroad, "Left side veerings")
 	draw_graph_line(left_injured, "Left side veerings that resulted in one or more injured")
 	draw_graph_line(left_dead, "Left side veerings that resulted in one or more dead")
